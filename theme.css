@@ -1,0 +1,45 @@
+/* Typography & Reset */
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Alexandria', sans-serif;
+  background-color: #08090d;
+}
+
+.font-mono {
+  font-family: 'Space Grotesk', monospace;
+}
+
+.font-reem {
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+/* Luxury Warm Gold Gradient */
+.gold-text {
+  background: linear-gradient(135deg, #ffffff 0%, #fae69e 40%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth Fade Up Animation */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Thin Scrollbar */
+#wishesStream::-webkit-scrollbar {
+  width: 3px;
+}
+#wishesStream::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 3px;
+}

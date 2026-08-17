@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>VIP Boarding Pass | زفاف سيف & فريدة</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Alexandria:wght@300;400;500;600;700;800&family=Reem+Kufi:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="theme.css" />
+</head>
+<body class="bg-[#08090d] text-slate-100 min-h-[100dvh] flex flex-col items-center justify-start p-3 sm:p-6 overflow-x-hidden selection:bg-[#e6c670] selection:text-black">
+
+  <!-- Floating Audio Widget -->
+  <aside class="fixed top-4 left-4 z-50">
+    <button id="toggleAudio" aria-label="تشغيل الموسيقى" class="p-3 rounded-full bg-[#131620]/90 backdrop-blur-md border border-[#e6c670]/40 text-[#f5db8b] shadow-2xl active:scale-90 transition flex items-center justify-center">
+      <i data-lucide="disc" id="audioIcon" class="w-5 h-5"></i>
+    </button>
+  </aside>
+
+  <!-- Local Audio Element -->
+  <audio id="weddingTrack" loop preload="auto">
+    <source src="./song.mp3" type="audio/mpeg">
+    <source src="song.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Main Boarding Pass Wrapper -->
+  <main class="w-full max-w-md my-auto space-y-4 pt-12 sm:pt-4 pb-10">
+
+    <!-- THE VIP TICKET -->
+    <div id="ticketCard" class="ticket-container relative rounded-[2rem] overflow-hidden bg-[#11131a] border border-[#e6c670]/30 shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
+      
+      <!-- Top Ticket Header -->
+      <div class="bg-gradient-to-r from-[#d4af37] via-[#f3dd87] to-[#c59b27] px-5 py-3.5 text-black flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i data-lucide="plane-takeoff" class="w-4 h-4 text-black"></i>
+          <span class="font-mono font-bold text-[11px] tracking-widest uppercase">ROYAL AIRLINES • VIP CLASS</span>
+        </div>
+        <span class="font-mono text-[10px] font-extrabold bg-black text-[#f3dd87] px-2.5 py-0.5 rounded-full shadow-sm">SPECIAL PASS</span>
+      </div>
+
+      <!-- Ticket Hero & Flight Details -->
+      <div class="p-5 sm:p-6 space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+          <div class="text-right">
+            <span class="text-[10px] text-slate-400 font-mono tracking-wider">FROM</span>
+            <h3 class="text-lg sm:text-xl font-bold font-mono text-white">CAIRO</h3>
+            <p class="text-[11px] text-[#e6c670]">حياة العزوبية</p>
+          </div>
+
+          <div class="flex flex-col items-center px-2">
+            <i data-lucide="heart" class="w-4 h-4 text-rose-500 fill-rose-500 animate-pulse"></i>
+            <div class="w-14 sm:w-16 h-[1px] border-t border-dashed border-[#e6c670]/40 my-1"></div>
+            <span class="text-[9px] font-mono text-slate-400">FLIGHT 2026</span>
+          </div>
+
+          <div class="text-left">
+            <span class="text-[10px] text-slate-400 font-mono tracking-wider">TO</span>
+            <h3 class="text-lg sm:text-xl font-bold font-mono text-white">FOREVER</h3>
+            <p class="text-[11px] text-[#e6c670]">عش الزوجية</p>
+          </div>
+        </div>
+
+        <!-- Couple Names -->
+        <div class="text-center space-y-1.5 py-1">
+          <p class="font-reem text-3xl sm:text-4xl font-bold gold-text leading-tight">
+            سيف المنشاوي & فريدة الشافعي
+          </p>
+          <p class="text-xs text-slate-300 font-light">«وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا»</p>
+        </div>
+
+        <!-- Ticket Details Grid -->
+        <div class="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-[#0a0b10] border border-slate-800 text-center font-mono">
+          <div>
+            <span class="text-[9px] text-slate-400 block">DATE</span>
+            <span class="text-xs font-bold text-[#f5db8b]">23 OCT 2026</span>
+          </div>
+          <div>
+            <span class="text-[9px] text-slate-400 block">TIME</span>
+            <span class="text-xs font-bold text-[#f5db8b]">07:00 PM</span>
+          </div>
+          <div>
+            <span class="text-[9px] text-slate-400 block">GATE</span>
+            <span class="text-xs font-bold text-[#f5db8b]">KEMPINSKI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Perforated Cut Line with Side Notches -->
+      <div class="relative flex items-center justify-between my-0">
+        <div class="w-4 h-8 rounded-l-full bg-[#08090d] border-r border-[#e6c670]/30 -mr-[1px]"></div>
+        <div class="flex-1 border-t-2 border-dashed border-slate-700/80 mx-2"></div>
+        <div class="w-4 h-8 rounded-r-full bg-[#08090d] border-l border-[#e6c670]/30 -ml-[1px]"></div>
+      </div>
+
+      <!-- Ticket Action & Countdown -->
+      <div class="p-5 sm:p-6 pt-3 space-y-4">
+        <!-- Live Countdown -->
+        <div class="grid grid-cols-4 gap-2 text-center font-mono">
+          <div class="p-2 rounded-xl bg-[#0a0b10] border border-slate-800">
+            <span id="days" class="text-base sm:text-lg font-bold text-[#f5db8b] block">--</span>
+            <span class="text-[9px] text-slate-400">DAYS</span>
+          </div>
+          <div class="p-2 rounded-xl bg-[#0a0b10] border border-slate-800">
+            <span id="hours" class="text-base sm:text-lg font-bold text-[#f5db8b] block">--</span>
+            <span class="text-[9px] text-slate-400">HOURS</span>
+          </div>
+          <div class="p-2 rounded-xl bg-[#0a0b10] border border-slate-800">
+            <span id="minutes" class="text-base sm:text-lg font-bold text-[#f5db8b] block">--</span>
+            <span class="text-[9px] text-slate-400">MINS</span>
+          </div>
+          <div class="p-2 rounded-xl bg-[#0a0b10] border border-slate-800">
+            <span id="seconds" class="text-base sm:text-lg font-bold text-[#f5db8b] block">--</span>
+            <span class="text-[9px] text-slate-400">SECS</span>
+          </div>
+        </div>
+
+        <!-- Scan / Rip Ticket Button -->
+        <button id="ripTicketBtn" class="w-full py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-[#d4af37] via-[#f3dd87] to-[#c59b27] text-black font-extrabold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-xl hover:brightness-110 active:scale-95 transition">
+          <i data-lucide="ticket" class="w-4 h-4"></i>
+          <span>قص التذكرة وتأكيد الحضور</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- REVEALED FLIGHT HUB (Appears after Ripping Ticket) -->
+    <div id="flightHub" class="hidden space-y-4 animate-fade-up">
+      
+      <!-- Venue & Navigation Card -->
+      <div class="p-5 rounded-3xl bg-[#11131a] border border-[#e6c670]/20 space-y-4 text-right shadow-xl">
+        <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+          <div class="flex items-center gap-2 text-[#f5db8b]">
+            <i data-lucide="map-pin" class="w-4 h-4"></i>
+            <h3 class="font-bold text-sm">موقع القاعة</h3>
+          </div>
+          <span class="text-[10px] text-slate-400 font-mono">The Grand Ballroom</span>
+        </div>
+        <p class="text-sm font-semibold text-white">فندق رويال مكسيم بالاس كمبنسكي</p>
+        <p class="text-xs text-slate-400">التجمع الأول، بالقرب من الطريق الدائري، القاهرة الجديدة</p>
+
+        <div class="grid grid-cols-2 gap-2.5 pt-1">
+          <a href="https://maps.google.com/?q=Royal+Maxim+Palace+Kempinski+Cairo" target="_blank" rel="noopener noreferrer" class="py-3 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
+            <i data-lucide="navigation" class="w-3.5 h-3.5 text-[#e6c670]"></i>
+            <span>خرائط Google</span>
+          </a>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=زفاف+سيف+وفريدة&dates=20261023T160000Z/20261023T230000Z&details=حفل+زفاف+سيف+وفريدة+بفندق+كمبنسكي&location=Royal+Maxim+Palace+Kempinski+Cairo" target="_blank" rel="noopener noreferrer" class="py-3 px-3 rounded-xl bg-gradient-to-r from-[#d4af37] to-[#f3dd87] text-black text-xs font-bold flex items-center justify-center gap-1.5 transition shadow-md">
+            <i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>
+            <span>حفظ الموعد</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Realtime Wishes Guestbook -->
+      <div class="p-5 rounded-3xl bg-[#11131a] border border-[#e6c670]/20 space-y-4 text-right shadow-xl">
+        <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+          <div class="flex items-center gap-2 text-[#f5db8b]">
+            <i data-lucide="message-square" class="w-4 h-4"></i>
+            <h3 class="font-bold text-sm">رسائل وتمنيات المسافرين ✈️</h3>
+          </div>
+          <span id="wishesCounter" class="text-[10px] text-slate-400 font-mono">0 WISHES</span>
+        </div>
+
+        <form id="wishesForm" class="space-y-2.5">
+          <input type="text" id="senderName" required placeholder="اسمك الكريم" class="w-full p-3 rounded-xl bg-[#0a0b10] border border-slate-800 text-xs text-white placeholder-slate-500 focus:border-[#e6c670] focus:outline-none transition" />
+          <textarea id="senderMsg" required rows="2" placeholder="اكتب أمنيتك ودعوتك للعروسين..." class="w-full p-3 rounded-xl bg-[#0a0b10] border border-slate-800 text-xs text-white placeholder-slate-500 focus:border-[#e6c670] focus:outline-none resize-none transition"></textarea>
+          <button type="submit" id="sendBtn" class="w-full py-3 bg-gradient-to-r from-[#d4af37] to-[#f3dd87] text-black font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg active:scale-95 transition">
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+            <span>إرسال التهنئة</span>
+          </button>
+        </form>
+
+        <div id="wishesStream" class="space-y-2 max-h-52 overflow-y-auto pr-1">
+          <div id="emptyMsg" class="text-center py-6 text-xs text-slate-500 font-mono">
+            NO WISHES YET. BE THE FIRST! 🤍
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <p class="text-center text-[10px] text-slate-500 font-mono pb-4">BOARDING PASS ID: #SF-2026-VIP • جنة الأطفال منازلهم</p>
+    </div>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
